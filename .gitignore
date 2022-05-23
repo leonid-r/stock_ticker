@@ -13,3 +13,7 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+stockhandler/stock.go
+stock_ticker
+__debug_bin
+.vscode/launch.json
