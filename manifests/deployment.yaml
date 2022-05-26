@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-ticker-deployment
+  namespace: stock-ticker
+  labels:
+    app: stock-ticker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-ticker
+  template:
+    metadata:
+      labels:
+        app: stock-ticker
+    spec:
+      containers:
+      - name: stock-ticker
+        image: leonidos/stock_ticker:0.1
+        ports:
+        - containerPort: 8080
+          name: http-st-svc
+        envFrom:
+        - configMapRef:
+            name: stock-ticker-config
+        - secretRef:
+            name: stock-ticker-secret
+
+            
